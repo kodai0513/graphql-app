@@ -1,0 +1,26 @@
+services:
+    # app:
+    #     build:
+    #         context: .
+    #         dockerfile: Dockerfile
+    #     ports:
+    #         - '8080:8080'
+    #     volumes:
+    #         - ./app:/app:cache
+    #         - rust-target:/app/target
+    #         - cargo-cache:/usr/local/cargo/registry
+    #         - type: bind
+    #           source: './app'
+    #           target: '/app'
+    #     command: /bin/sh -c "cargo watch -w Cargo.lock -w Cargo.toml -w app -s 'mold -run cargo run'"
+    db:
+        image: postgres:15.10
+        volumes:
+            - postgres_volume:/var/lib/postgresql
+        ports:
+            - "5432:5432"
+
+volumes:
+    rust-target:
+    cargo-cache:
+    postgres_volume:
